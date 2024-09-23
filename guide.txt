@@ -1,0 +1,37 @@
+1. admin roles
+
+- for deployment of cloud function
+	
+	. iam.gserviceaccount.com mail is required.
+	. and assigned to admin role 
+		- service account admin
+		- firebase develop admin
+
+
+- code example using Cloud SDK
+
+gcloud functions deploy processFeed \
+  --gen2 \
+  --service-account my-service-account-dark-safegu@dark-safeguard-369020.iam.gserviceaccount.com \
+  --runtime nodejs18 \
+  --trigger-topic firebase-schedule-scheduledGetFinancialNews \
+  --project dark-safeguard-369020 \
+  --entry-point processFeed \
+  --source . \
+  --allow-unauthenticated
+
+
+there 
+	- processFeed is function name in index.js
+	- my-service-account-dark-safegu@dark-safeguard-369020.iam.gserviceaccount.com  is mail and owner needes to create it and assign to developers
+	- trigger-topic name is linked to scheduler (as Pub/Sub)
+	- dark-safeguard-369020 is current cloud project
+
+
+
+
+2. for firestore
+
+	
+- need to assign roles to new collections of firebase's db. And this is implemented via firebase site.
+
